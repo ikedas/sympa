@@ -19,6 +19,6 @@ jobs:
         run: >
           gh pr list -H $GITHUB_REPOSITORY_OWNER:$GITHUB_REF_NAME
           --json number --jq '.[].number' | grep '[0-9]'
-          ||
+           ||
           gh pr create -H $GITHUB_REPOSITORY_OWNER:$GITHUB_REF_NAME
           -t "$GH_PR_TITLE" -b "$GH_PR_BODY" -l "$GH_PR_LABEL"
