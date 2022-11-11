@@ -4,14 +4,13 @@ on:
       - translation
 
 env:
-  SYMPA_REPOSITORY_OWNER: ikedas
   GH_PR_TITLE: Update translation
   GH_PR_BODY: This pull request was automatically submitted.
   GH_PR_LABEL: translation,on going,ignore-for-release
 
 jobs:
   submit-pr-for-translation:
-    if: ${{ github.repository_owner == env.SYMPA_REPOSITORY_OWNER }}
+    if: github.repository_owner == 'ikedas'
     runs-on: ubuntu-latest
     steps:
       - name: Submit PR to update translation
