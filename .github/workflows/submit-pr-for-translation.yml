@@ -18,7 +18,7 @@ jobs:
       - name: Submit PR to update translation
         run: |
           if gh pr list -H $GITHUB_REPOSITORY_OWNER:$GITHUB_REF_NAME \
-          --json number --jq '.[].number' | grep '[0-9]'; then
+          --json number | grep 'number'; then
               echo 'PR alreadsy exists.'
           else
             gh pr create -H $GITHUB_REPOSITORY_OWNER:$GITHUB_REF_NAME \
