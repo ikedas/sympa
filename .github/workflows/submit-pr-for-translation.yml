@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      - translation
+
+env:
+  SYMPA_REPOSITORY_OWNER: ikedas
+  GH_PR_TITLE: Update translation
+  GH_PR_BODY: This pull request was automatically submitted.
+  GH_PR_LABEL: translation,on going,ignore-for-release
+
+jobs:
+  submit-pr-for-translation:
+    if: github.repository_owner == env.SYMPA_REPOSITORY_OWNER
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit PR to update translation
+        run: >
+          gh pr list -H $GITHUB_REPOSITORY_OWNER:$GITHUB_REF_NAME
+          --json number --jq '.[].number'
