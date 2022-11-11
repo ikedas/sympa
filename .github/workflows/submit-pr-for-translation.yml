@@ -16,9 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Submit PR to update translation
-        run: >
-          gh pr list -H $GITHUB_REPOSITORY_OWNER:$GITHUB_REF_NAME
-          --json number --jq '.[].number' | grep '[0-9]'
-           ||
-          gh pr create -H $GITHUB_REPOSITORY_OWNER:$GITHUB_REF_NAME
-          -t "$GH_PR_TITLE" -b "$GH_PR_BODY" -l "$GH_PR_LABEL"
+        run: |
+          if gh pr list -H $GITHUB_REPOSITORY_OWNER:$GITHUB_REF_NAME \
+          --json number --jq '.[].number' | grep '[0-9]'; then
+              echo 'PR alreadsy exists.'
+          else
+            gh pr create -H $GITHUB_REPOSITORY_OWNER:$GITHUB_REF_NAME \
+            -t "$GH_PR_TITLE" -b "$GH_PR_BODY" -l "$GH_PR_LABEL"
+          fi
