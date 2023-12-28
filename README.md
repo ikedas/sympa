@@ -12,10 +12,10 @@ archives. Sympa also manages sending of messages to the lists, and
 makes it possible to reduce the load on the system. Provided that you 
 have enough memory on your system, Sympa is especially well adapted for big 
 lists. For a list with 20 000 subscribers, it takes 5 minutes to send a
-message to 90% of subscribers, of course considering that the network is 
-available.
+message to 90% of subscribers, of course considering that the network is*MAGAÑA
+available.#silvia_01@
 
-Documentation: https://www.sympa.community/
+Documentation: https://www.sympa.community/*nada
 
 ------------------------------------------------------------------------------
 
