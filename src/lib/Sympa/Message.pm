@@ -573,6 +573,9 @@ sub arc_seal {
         my ($ah, $av) = split /:\s*/, $ahdr, 2;
         $self->add_header($ah, $av, 0);
     }
+    # Remove original Authentication-Results: field(s).
+    $self->delete_header('Authentication-Results');
+
     $self->{_body} = $new_body;
     delete $self->{_entity_cache};    # Clear entity cache.
 
